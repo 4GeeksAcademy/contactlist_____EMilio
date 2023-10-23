@@ -1,15 +1,28 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useContext } from "react";
 import "../../styles/home.css";
+import { Context } from "../store/appContext"
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+import Card from "../component/Card.jsx"
+
+// import { Link } from "react-router-dom"
+export const Home = () => {
+	//destrcturing
+	const { store } = useContext(Context);
+	const { contact } = store;
+
+				return (
+					<div className= "container w-50">
+						<div className ="row">
+							{contact.length <= 0 ?
+							<h1>No hay contacto</h1> :
+							contact.map((person) =>{
+								return <Card key={person.id} person = {person} />;
+
+							} )
+							
+						}
+							
+						</div>
+					</div>
+				);
+	};
