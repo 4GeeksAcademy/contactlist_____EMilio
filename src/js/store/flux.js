@@ -87,7 +87,7 @@ const getState = ({ getStore, getActions, setStore, getContact, updateContact })
 					)
 
 					if (response.ok) {
-						getActions().updateContact()
+						getActions().getAllContact()
 					}
 
 				} catch (error) {
